@@ -1,0 +1,116 @@
+.calendar-container .rbc-calendar {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  /* Overall wrapper can just blend into the background */
+  background: transparent;
+}
+
+/* Aggressively remove ALL borders from the calendar to completely eliminate grid lines */
+.calendar-container .rbc-calendar,
+.calendar-container .rbc-month-view,
+.calendar-container .rbc-time-view,
+.calendar-container .rbc-agenda-view,
+.calendar-container .rbc-day-bg,
+.calendar-container .rbc-month-row,
+.calendar-container .rbc-time-content,
+.calendar-container .rbc-time-content > * > * > *,
+.calendar-container .rbc-timeslot-group,
+.calendar-container .rbc-time-header,
+.calendar-container .rbc-time-header-content,
+.calendar-container .rbc-day-slot,
+.calendar-container .rbc-time-slot,
+.calendar-container .rbc-header {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.calendar-container .rbc-month-view,
+.calendar-container .rbc-time-view,
+.calendar-container .rbc-agenda-view {
+  background: transparent !important;
+}
+
+/* Header styling (Mon, Tue, etc.) */
+.calendar-container .rbc-header {
+  padding: 0.75rem 0;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  border-bottom: 1px solid transparent; /* Hide bottom line */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Highlight today subtly without a harsh background */
+.calendar-container .rbc-today {
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+}
+
+/* Events */
+.calendar-container .rbc-event {
+  background-color: var(--accent-color);
+  color: var(--accent-text);
+  border-radius: var(--radius-md);
+  padding: 4px 8px;
+  margin: 2px 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: none !important;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.calendar-container .rbc-event:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Date numbers in month view */
+.calendar-container .rbc-date-cell {
+  padding: 0.5rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Off-range dates */
+.calendar-container .rbc-off-range-bg {
+  background: transparent;
+}
+.calendar-container .rbc-off-range {
+  color: var(--text-tertiary);
+  opacity: 0.5;
+}
+
+/* Toolbar styling */
+.calendar-container .rbc-toolbar {
+  margin-bottom: 2rem;
+}
+
+.calendar-container .rbc-toolbar-label {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.calendar-container .rbc-btn-group button {
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full) !important;
+  margin: 0 4px;
+  padding: 0.4rem 1rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.calendar-container .rbc-btn-group button:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.calendar-container .rbc-btn-group button.rbc-active {
+  background: var(--accent-color);
+  color: var(--accent-text);
+  box-shadow: none;
+}
