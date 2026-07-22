@@ -119,9 +119,29 @@ export function TasksView() {
     : tasks.filter(t => t.category_ids && t.category_ids.includes(filterCategory));
 
   const sortedTasks = [...filteredTasks].sort((a, b) => {
+    // 1. Status: todo before done
     if (a.status !== b.status) {
       return a.status === 'todo' ? -1 : 1;
     }
+
+    // 2. Priority: high > medium > low
+    const priorityWeight: Record<string, number> = { high: 3, medium: 2, low: 1 };
+    const weightA = priorityWeight[a.priority] || 0;
+    const weightB = priorityWeight[b.priority] || 0;
+    if (weightA !== weightB) {
+      return weightB - weightA;
+    }
+
+    // 3. Due date (deadline): earliest first
+    if (a.deadline && b.deadline) {
+      return new Date(a.deadline).getTime() - new Date(b.deadline).getTime();
+    } else if (a.deadline) {
+      return -1;
+    } else if (b.deadline) {
+      return 1;
+    }
+
+    // 4. Fallback to created_at (newer first)
     return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
   });
 
